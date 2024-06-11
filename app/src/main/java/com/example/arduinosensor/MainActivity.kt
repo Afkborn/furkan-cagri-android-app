@@ -32,7 +32,6 @@ import kotlinx.coroutines.*
 
 
 class MainActivity : Activity() {
-    private var  connectedWS : Boolean = false
     private var  connectedArd : Boolean = false
     private lateinit var  arcGaugeTemp : ArcGauge
     private lateinit var  arcGaugeHumidty : ArcGauge
@@ -86,8 +85,8 @@ class MainActivity : Activity() {
                 override fun onTextMessage(websocket: WebSocket, message: String) {
                     // Gelen JSON verisini işle
                     try {
+                        wsStatusTextView.setText(R.string.main_wsStat_True)
                         val json = JSONObject(message)
-                        Log.e(TAG, json.toString())
                         val type = json.getString("type")
                         if ("SENSOR_DATA" == type) {
                             arcGaugeTemp.value = json.getDouble("temperaute")
@@ -108,14 +107,12 @@ class MainActivity : Activity() {
                     websocket: WebSocket?,
                     headers: MutableMap<String, MutableList<String>>?
                 ) {
-                    connectedWS = true
                     wsStatusTextView.setText(R.string.main_wsStat_True)
                     super.onConnected(websocket, headers)
                 }
 
                 override fun onError(websocket: WebSocket?, cause: WebSocketException?) {
                     super.onError(websocket, cause)
-                    connectedWS = false
                     wsStatusTextView.setText(R.string.main_wsStat_False)
 
                 }
@@ -158,36 +155,10 @@ class MainActivity : Activity() {
         Toast.makeText(this, "Güncelleniyor...", Toast.LENGTH_LONG).show()
         getLimitData()
         checkArduinoStat()
-        checkWsStat()
+
 
     }
 
-    private fun checkWsStat(){
-        try {
-            val ws = WebSocketFactory().createSocket("ws://149.34.202.193:3232/")
-            ws.addListener(object : WebSocketAdapter() {
-                override fun onConnected(
-                    websocket: WebSocket?,
-                    headers: MutableMap<String, MutableList<String>>?
-                ) {
-                    connectedWS = true
-                    wsStatusTextView.setText(R.string.main_wsStat_True)
-                    ws.disconnect()  // Bağlantıyı kapat
-                    super.onConnected(websocket, headers)
-                }
-
-                override fun onError(websocket: WebSocket?, cause: WebSocketException?) {
-                    super.onError(websocket, cause)
-                    connectedWS = false
-                    wsStatusTextView.setText(R.string.main_wsStat_False)
-                    ws.disconnect()  // Bağlantıyı kapat
-                }
-            })
-            ws.connectAsynchronously()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
 
     private fun checkArduinoStat(){
         runBlocking {
