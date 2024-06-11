@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.ekn.gruzer.gaugelibrary.HalfGauge
+        android:id="@+id/halfGauge_Gas"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/halfGauge_Flame" />
+
+    <com.ekn.gruzer.gaugelibrary.HalfGauge
+        android:id="@+id/halfGauge_Flame"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/halfGauge_water" />
+
+    <com.ekn.gruzer.gaugelibrary.ArcGauge
+        android:id="@+id/arcGauge_humidty"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/arcGauge_temp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ekn.gruzer.gaugelibrary.ArcGauge
+        android:id="@+id/arcGauge_temp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/arcGauge_humidty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_celsius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="@string/main_celsius"
+        app:layout_constraintEnd_toEndOf="@+id/arcGauge_temp"
+        app:layout_constraintStart_toStartOf="@+id/arcGauge_temp"
+        app:layout_constraintTop_toTopOf="@+id/arcGauge_temp" />
+
+    <TextView
+        android:id="@+id/txt_humidty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="@string/main_humidty"
+        app:layout_constraintEnd_toEndOf="@+id/arcGauge_humidty"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/arcGauge_humidty"
+        app:layout_constraintTop_toTopOf="@+id/arcGauge_humidty" />
+
+    <TextView
+        android:id="@+id/wsStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_wsStat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.ekn.gruzer.gaugelibrary.HalfGauge
+        android:id="@+id/halfGauge_water"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arcGauge_temp" />
+
+    <TextView
+        android:id="@+id/txt_water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_water"
+        app:layout_constraintEnd_toEndOf="@+id/halfGauge_water"
+        app:layout_constraintStart_toStartOf="@+id/halfGauge_water"
+        app:layout_constraintTop_toTopOf="@+id/halfGauge_water" />
+
+    <TextView
+        android:id="@+id/txt_flame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_flame"
+        app:layout_constraintEnd_toEndOf="@+id/halfGauge_Flame"
+        app:layout_constraintStart_toStartOf="@+id/halfGauge_Flame"
+        app:layout_constraintTop_toTopOf="@+id/halfGauge_Flame" />
+
+    <TextView
+        android:id="@+id/txt_gas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/main_gas"
+        app:layout_constraintEnd_toEndOf="@+id/halfGauge_Gas"
+        app:layout_constraintStart_toStartOf="@+id/halfGauge_Gas"
+        app:layout_constraintTop_toTopOf="@+id/halfGauge_Gas" />
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/refresh"
+        app:layout_constraintEnd_toEndOf="@+id/wsStatus"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="@+id/wsStatus"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ArdStat" />
+
+    <TextView
+        android:id="@+id/txt_ArdStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_ArdStat"
+        app:layout_constraintEnd_toEndOf="@+id/wsStatus"
+        app:layout_constraintStart_toStartOf="@+id/wsStatus"
+        app:layout_constraintTop_toBottomOf="@+id/wsStatus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

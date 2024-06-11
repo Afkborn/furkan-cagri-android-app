@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Arduino Sensor</string>
+    <string name="channel_name">MyNotificationChannel</string>
+    <string name="channel_description">Description of my notification channel</string>
+    <string name="main_celsius">Temperature (C°)</string>
+    <string name="main_humidty">Humidty (%)</string>
+    <string name="main_water">Water</string>
+    <string name="main_flame">Flame</string>
+    <string name="main_gas">Gas</string>
+    <string name="main_wsStat">Sunucu Durumu: </string>
+    <string name="main_ArdStat">Arduino Durumu: </string>
+    <string name="main_wsStat_False">Sunucu Durumu: Pasif </string>
+    <string name="main_wsStat_True">Sunucu Durumu: Aktif </string>
+    <string name="main_ArdStat_False">Arduino Durumu: Pasif </string>
+    <string name="main_ArdStat_True">Arduino Durumu: Aktif</string>
+</resources>
